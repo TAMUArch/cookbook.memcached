@@ -1,0 +1,40 @@
+## File managed by Chef
+
+# Run memcached as a daemon.
+<% if node["memcached"]["run_as_daemon"] -%>
+-d
+<% end -%>
+
+ # pidfile
+-P <%= node["memcached"]["pid_file"] %> 
+
+# Log memcached's output
+logfile <%= node["memcached"]["logfile"] %> 
+
+# Use <num> MB memory max to use for object storage.
+-m <%= node["memcached"]["max_mem"] %> 
+
+<% if node["memcached"]["lock_mem"] -%>
+-k
+<% end -%>
+
+<% if node["memcached"]["use_unix_socket"] -%>
+-s <%= node["memcached"]["unix_socket"] %>
+<% else -%>
+# IP to listen on
+-l <%= node["memcached"]["listen_ip"] %> 
+
+# TCP port to listen on
+-p <%= node["memcached"]["listen_tcp"] %> 
+
+# UDP port to listen on
+-U <%= node["memcached"]["listen_udp"] %> 
+<% end -%>
+# Run daemon as user
+-u <%= node["memcached"]["user"] %> 
+
+# Limit the number of simultaneous incoming connections.
+-c <%= node["memcached"]["max_connections"] %> 
+
+# Number of threads to use to process incoming requests.
+-t <%= node["memcached"]["processor_count"] %> 
