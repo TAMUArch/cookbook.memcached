@@ -72,3 +72,4 @@ Contributing
 License and Authors
 -------------------
 Authors: Jim Rosser 
+License: MIT
