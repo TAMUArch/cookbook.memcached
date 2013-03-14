@@ -10,6 +10,7 @@ package node["memcached"]["package"] do
   action [:install]
 end
 
+# Allows for memory percentage to be used
 if node["memcached"]["max_mem"].to_s.match("%")
   node.set[:memcached][:max_mem]= ((node["memory"]["total"].to_i / 1024)*(node["memcached"]["max_mem"].to_i * 0.01)).to_i
 end

@@ -1,23 +1,10 @@
 memcached Cookbook
 ==================
-TODO: Enter the cookbook description here.
-
-e.g.
-This cookbook makes your favorite breakfast sandwhich.
-
-Requirements
-------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
-
-e.g.
-#### packages
-- `toaster` - memcached needs toaster to brown your bagel.
+Basic Memcahed Cookbook that has currently only been tested with Ubuntu 12.04.
 
 Attributes
 ----------
-TODO: List you cookbook attributes here.
 
-e.g.
 #### memcached::default
 <table>
   <tr>
@@ -27,19 +14,40 @@ e.g.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['memcached']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
+    <td><tt>['memcached']['listen_ip']</tt></td>
+    <td>String</td>
+    <td>IP for memcached to listen on</td>
+    <td>0.0.0.0</td>
+  </tr>
+  <tr>
+    <td><tt>['memcached']['listen_tcp']</tt></td>
+    <td>String</td>
+    <td>TCP Port for memcached to listen on</td>
+    <td>11211</td>
+  </tr>
+  <tr>
+    <td><tt>['memcached']['listen_UDP']</tt></td>
+    <td>String</td>
+    <td>UDP Port for memcached to listen on</td>
+    <td>11211</td>
+  </tr>
+  <tr>
+    <td><tt>['memcached']['user']</tt></td>
+    <td>String</td>
+    <td>User to run memcached as</td>
+    <td>nobody</td>
+  </tr>
+  <tr>
+    <td><tt>['memcached']['max_mem']</tt></td>
+    <td>String</td>
+    <td>Default max amount of memory to allow memcached to use. Can be set to percentage or an actual number</td>
+    <td>90%</td>
   </tr>
 </table>
 
 Usage
 -----
 #### memcached::default
-TODO: Write usage instructions for each cookbook.
-
-e.g.
 Just include `memcached` in your node's `run_list`:
 
 ```json
@@ -53,9 +61,7 @@ Just include `memcached` in your node's `run_list`:
 
 Contributing
 ------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
 
-e.g.
 1. Fork the repository on Github
 2. Create a named feature branch (like `add_component_x`)
 3. Write you change
@@ -65,4 +71,4 @@ e.g.
 
 License and Authors
 -------------------
-Authors: TODO: List authors
+Authors: Jim Rosser 
